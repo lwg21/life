@@ -1,11 +1,17 @@
-<% @habits.each do |habit| %>
-  <div>
-    <% if habit.done_today? %>
-      <%= habit.name %> ☀️
-    <% else %>
-      <%= link_to habit.name, done_habit_path(habit), data: { turbo_method: :post } %>
-    <% end %>
-  </div>
-<% end %>
+<div class="mb">
+  <%= Date.today %>
+</div>
+
+<div class="mb">
+  <% @habits.each do |habit| %>
+    <div>
+      <% if habit.done_today? %>
+        ☀️
+      <% else %>
+        <%= link_to habit.name, done_habit_path(habit), data: { turbo_method: :post } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to "Reset day", reset_habits_path, data: { turbo_method: :delete } %>
