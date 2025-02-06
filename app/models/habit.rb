@@ -1,4 +1,6 @@
 class Habit < ApplicationRecord
+  belongs_to :user
+
   def done_today!
     HabitLog.create(habit: self, log_date: Date.today)
   end
