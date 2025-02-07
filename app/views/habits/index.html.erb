@@ -1,17 +1,17 @@
-<h2><%= @date %></h2>
+<%= render partial: "calendar", locals: @calendar_data %>
+
+<h3><%= @date %></h3>
 
 <div class="mb">
   <% @habits.each do |habit| %>
     <div>
       <% if habit.done_today? %>
-        ☀️
+        <div class="habit habit-done"><%= habit.name %></div>
       <% else %>
-        <%= link_to habit.name, done_habit_path(habit), data: { turbo_method: :post } %>
+        <%= link_to habit.name, done_habit_path(habit), data: { turbo_method: :post }, class: "habit" %>
       <% end %>
     </div>
   <% end %>
 </div>
 
-<%= link_to "Reset day", reset_habits_path, data: { turbo_method: :delete } %>
-
-<%= render partial: "calendar", locals: @calendar_data %>
+<%= link_to "reset day", reset_habits_path, data: { turbo_method: :delete } %>

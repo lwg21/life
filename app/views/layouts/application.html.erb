@@ -24,6 +24,6 @@
 
   <body>
     <%= yield %>
-    <%= link_to "logout", session_path, data: { turbo_method: :delete } %>
+    <div><%= link_to "logout", session_path, data: { turbo_method: :delete } if authenticated? %></div>
   </body>
 </html>
