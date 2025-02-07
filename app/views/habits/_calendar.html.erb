@@ -1,0 +1,29 @@
+<h3><%= [Date::MONTHNAMES[date.month], date.year].join(" ") %></h3>
+
+<div class="calendar">
+  <% p top %>
+  <% (1..date.end_of_month.day).each do |i| %>
+    <% scale = data[i] ? (data[i].fdiv(top) * 5).ceil : 0 %>
+    <div class="square cal-color<%= scale %>"></div>
+  <% end %>
+</div>
+
+<style>
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+
+  .square {
+    aspect-ratio: 1;
+    align-content: center;
+  }
+
+  .cal-color0 { background-color:rgb(228, 228, 228); }
+  .cal-color1 { background-color:rgb(138, 227, 159); }
+  .cal-color2 { background-color:rgb(87, 190, 111); }
+  .cal-color3 { background-color:rgb(51, 151, 74); }
+  .cal-color4 { background-color:rgb(37, 129, 58); }
+  .cal-color5 { background-color:rgb(15, 103, 36); }
+</style>

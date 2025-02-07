@@ -5,4 +5,5 @@ class User < ApplicationRecord
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   has_many :habits
+  has_many :habit_logs, through: :habits
 end

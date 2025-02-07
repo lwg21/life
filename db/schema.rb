@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_06_150407) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_06_153034) do
   create_table "habit_logs", force: :cascade do |t|
     t.integer "habit_id", null: false
     t.date "log_date"
@@ -23,6 +23,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_150407) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -43,5 +45,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_150407) do
   end
 
   add_foreign_key "habit_logs", "habits"
+  add_foreign_key "habits", "users"
   add_foreign_key "sessions", "users"
 end
