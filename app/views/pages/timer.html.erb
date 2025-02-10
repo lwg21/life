@@ -1,0 +1,10 @@
+<div id="timer"
+     data-controller="timer"
+     data-timer-sound-value="<%= audio_path("bells.mp3") %>">
+  <div id="time" data-timer-target="time"></div>
+  <div id="controls">
+    <button data-action="click->timer#stop">Stop</button>
+    <button data-action="click->timer#reset">Reset</button>
+    <button data-action="click->timer#start">Start</button>
+  </div>
+</div>

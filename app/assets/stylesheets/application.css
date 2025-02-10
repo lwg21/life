@@ -15,10 +15,12 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  min-height: 100vh;
 }
 
 nav {
-  height: 80px;
   background-color: rgb(24, 97, 67);
   color: white;
   align-content: center;
