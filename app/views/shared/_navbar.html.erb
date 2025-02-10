@@ -1,2 +1,3 @@
+<%= link_to "home", root_path %>
 <%= link_to "new habit", new_habit_path %>
 <%= link_to "logout", session_path, data: { turbo_method: :delete } if authenticated? %>
