@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   root "habits#index"
   post "habits/:id/done", to: "habits#mark_done", as: :done_habit
   delete "habits/reset", to: "habits#reset_day", as: :reset_habits
+  resources :habits, only: %i[new create]
 end

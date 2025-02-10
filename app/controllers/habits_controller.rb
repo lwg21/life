@@ -16,6 +16,20 @@ class HabitsController < ApplicationController
     }
   end
 
+  def new
+    @habit = Habit.new
+  end
+
+  def create
+    @habit = Habit.new(habit_params)
+    @habit.user = Current.user
+    if @habit.save
+      redirect_to :root, notice: "Habit created"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def mark_done
     @habit = Habit.find(params[:id])
     @habit.done_today!
@@ -25,5 +39,11 @@ class HabitsController < ApplicationController
   def reset_day
     HabitLog.where(log_date: Date.today).destroy_all
     redirect_to root_path
+  end
+
+  private
+
+  def habit_params
+    params.expect(habit: :name)
   end
 end

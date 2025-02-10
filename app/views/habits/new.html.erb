@@ -1,0 +1,8 @@
+<h2>Create a new habit</h2>
+
+<%= form_with model: @habit do |form| %>
+  <%= form.text_field :name, required: true, autofocus: true, placeholder: "Enter habit name" %><br>
+  <%= form.submit "Create" %>
+<% end %>
+
+<%= link_to "back", root_path %>
