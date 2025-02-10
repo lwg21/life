@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <%= yield %>
-    <div><%= link_to "logout", session_path, data: { turbo_method: :delete } if authenticated? %></div>
+    <nav><%= render "shared/navbar" %></nav>
+    <main><%= yield %></main>
   </body>
 </html>

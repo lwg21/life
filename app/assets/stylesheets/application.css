@@ -13,6 +13,22 @@
 body {
   font-size: x-large;
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  height: 80px;
+  background-color: #32533D;
+  color: white;
+  align-content: center;
+}
+
+nav a {
+  color: white;
+}
+
+main {
   padding: 30px;
 }
 
