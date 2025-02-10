@@ -19,7 +19,7 @@ body {
 
 nav {
   height: 80px;
-  background-color: #32533D;
+  background-color: rgb(24, 97, 67);
   color: white;
   align-content: center;
 }
@@ -39,7 +39,7 @@ main {
 .habit {
   display: block;
   background-color: rgb(228, 228, 228);
-  padding: 5px 0px;
+  padding: 7px 0px;
   margin: 5px 0px;
   border-radius: 4px;
   text-decoration: none;
@@ -48,5 +48,5 @@ main {
 
 .habit-done {
   color: white;
-  background-color: rgb(15, 103, 36);
+  background-color: rgb(51, 129, 96);
 }

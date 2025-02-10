@@ -1,6 +1,6 @@
 class Habit < ApplicationRecord
   belongs_to :user
-  has_many :habit_logs
+  has_many :habit_logs, dependent: :destroy
 
   def done_today!
     HabitLog.create(habit: self, log_date: Date.today)
