@@ -14,6 +14,7 @@ class HabitsController < ApplicationController
       data: monthly_habits,
       top: @habits.count
     }
+    p @calendar_data
   end
 
   def new
