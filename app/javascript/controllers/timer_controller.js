@@ -9,7 +9,7 @@ export default class extends Controller {
 
   connect() {
     this.oneSecond = 1000;
-    this.duration = 60000;
+    this.duration = 600000;
     this.remaining = this.duration;
     this.running = false;
     this.#refreshTime();
