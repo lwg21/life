@@ -20,7 +20,12 @@ export default class extends Controller {
     if (this.running) return;
 
     this.running = true;
-    this.audio.play();
+    this.#refreshStatus();
+
+    if (this.remaining === this.duration) {
+      this.audio.play();
+    }
+
     this.interval = window.setInterval(() => {
       if (this.running) {
         this.remaining -= this.oneSecond;
@@ -36,6 +41,7 @@ export default class extends Controller {
 
   stop() {
     this.running = false;
+    this.#refreshStatus();
     window.clearInterval(this.interval);
     this.audio.pause();
     this.audio.currentTime = 0;
@@ -51,5 +57,13 @@ export default class extends Controller {
     const minutes = Math.floor(this.remaining / 60000).toString().padStart(2, "0");
     const seconds = ((this.remaining % 60000) / 1000).toFixed(0).toString().padStart(2, "0");
     this.timeTarget.innerText = `${minutes}:${seconds}`;
+  }
+
+  #refreshStatus() {
+    if (this.running) {
+      this.timeTarget.classList.remove("inactive");
+    } else {
+      this.timeTarget.classList.add("inactive");
+    }
   }
 }
