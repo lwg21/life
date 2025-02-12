@@ -49,14 +49,14 @@ main {
 }
 
 .mb {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .habit {
   display: block;
   background-color: rgb(228, 228, 228);
   padding: 7px 0px;
-  margin: 5px 0px;
+  margin: 7px 0px;
   border-radius: 4px;
   text-decoration: none;
   color: grey;
@@ -65,4 +65,8 @@ main {
 .habit-done {
   color: white;
   background-color: rgb(51, 129, 96);
+}
+
+.reset-icon {
+  color: #919191;
 }
