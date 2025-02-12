@@ -1,29 +1,31 @@
 #timer {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: calc(100vh - var(--navbar-height) - 2* var(--main-padding));
+
   #time {
-    font-size: 85pt;
+    font-size: 100pt;
     margin-bottom: 30px;
+    align-content: center;
+    font-family: var(--font-secondary);
   }
 
   .inactive {
     color: grey;
   }
 
-  & button {
-    font-size: inherit;
-    padding: 10px 18px;
-    color: grey;
-    background-color: rgb(228, 228, 228);
-    border: none;
-    border-radius: 4px;
-  }
-
   #controls {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 7px;
+
   }
 
-  & button:last-child {
+  & div {
+    margin: 0;
+  }
+
+  & div:last-child {
     grid-column: span 2;
   }
 }

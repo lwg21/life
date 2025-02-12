@@ -1,8 +1,8 @@
-<h3><%= @date %></h3>
-
 <%= render partial: "calendar", locals: @calendar_data %>
 
-<div class="mb">
+<h2><%= @date %></h2>
+
+<div class="mb-s">
   <% @habits.each do |habit| %>
     <div>
       <% if habit.done_today? %>
