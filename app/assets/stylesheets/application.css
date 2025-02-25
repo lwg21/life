@@ -78,6 +78,8 @@ main {
   text-decoration: none;
   color: grey;
   font-size: smaller;
+  min-height: 44px;
+  align-content: center;
 }
 
 .habit-done {
@@ -88,4 +90,9 @@ main {
 .action-icon {
   color: #919191;
   text-decoration: none;
+
+  & svg {
+    height: 28px;
+    width: 28px;
+  }
 }
