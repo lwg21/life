@@ -1,4 +1,10 @@
 <div class="calendar mb-m">
+  <% Date::DAYNAMES.rotate(1).each do |dayname| %>
+    <div class="square weekday">
+      <%= dayname[0] %>
+    </div>
+  <% end %>
+
   <% (date.beginning_of_month.cwday - 1).times do %>
     <div class="square">
       <div class="cal-dot"></div>
@@ -7,7 +13,9 @@
 
   <% (1..date.end_of_month.day).each do |i| %>
     <% scale = data[i] ? (data[i].fdiv(top) * 5).ceil : 0 %>
-    <div class="square cal-color<%= scale %> <%= 'today' if date.day == i && scale == 0 %>"></div>
+    <div class="square cal-color<%= scale %> <%= 'today' if date.day == i && scale == 0 %>">
+      <%= date.day if date.day == i %>
+    </div>
   <% end %>
 
   <% (7 - date.end_of_month.cwday).times do %>
@@ -21,7 +29,7 @@
   .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+    gap: 6px;
   }
 
   .square {
@@ -31,6 +39,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    color: white;
+    font-size: smaller;
+    font-weight: 400;
   }
 
   .cal-dot {
@@ -39,16 +51,46 @@
     height: 6px;
     width: 6px;
   }
-  .cal-color0 { background-color:hsl(0, 0.00%, 90%); }
-  .cal-color1 { background-color:rgb(133, 202, 174); }
-  .cal-color2 { background-color:rgb(90, 166, 134); }
-  .cal-color3 { background-color:rgb(51, 129, 96); }
-  .cal-color4 { background-color:rgb(31, 109, 77); }
-  .cal-color5 { background-color:rgb(9, 75, 48); }
-  .today { animation: pulse 2s infinite; }
+
+  .cal-color0 {
+    background-color:hsl(0, 0.00%, 90%);
+  }
+
+  .cal-color1 {
+    background-color:rgb(133, 202, 174);
+  }
+
+  .cal-color2 {
+    background-color:rgb(90, 166, 134);
+    color: white;
+  }
+
+  .cal-color3 {
+    background-color:rgb(51, 129, 96);
+    color: white;
+  }
+
+  .cal-color4 {
+    background-color:rgb(31, 109, 77);
+    color: white;
+  }
+
+  .cal-color5 {
+    background-color:rgb(9, 75, 48);
+    color: white;
+  }
+
+  .today {
+    animation: pulse 2s infinite;
+  }
+
+  .weekday {
+    color: hsl(0, 0.00%, 50%);
+    font-size: small;
+  }
 
   @keyframes pulse {
-    50% { background-color: hsl(0, 0.00%, 70%); }
+    50% { background-color: hsl(0, 0.00%, 50%); }
     0%, 100% { background-color: hsl(0, 0.00%, 90%); }
   }
 </style>

@@ -1,7 +1,5 @@
 <%= render partial: "calendar", locals: @calendar_data %>
 
-<h2><%= @date %></h2>
-
 <div class="mb-s">
   <% @habits.each do |habit| %>
     <div>
@@ -14,6 +12,11 @@
   <% end %>
 </div>
 
-<%= link_to reset_habits_path, data: { turbo_method: :delete }, class: "reset-icon" do %>
+<div>
+  <%= link_to reset_habits_path, data: { turbo_method: :delete }, class: "action-icon" do %>
     <%= render "shared/icons/rotate" %>
-<% end %>
+  <% end %>
+  <%= link_to new_habit_path, class: "action-icon" do %>
+    <%= render "shared/icons/square_plus" %>
+  <% end %>
+</div>
