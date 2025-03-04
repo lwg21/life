@@ -1,0 +1,67 @@
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.square {
+  aspect-ratio: 1;
+  /* align-content: center; */
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  font-size: smaller;
+  font-weight: 400;
+}
+
+.cal-dot {
+  background-color: hsl(0, 0.00%, 90%);
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+}
+
+.cal-color0 {
+  background-color:hsl(0, 0.00%, 90%);
+}
+
+.cal-color1 {
+  background-color:rgb(133, 202, 174);
+}
+
+.cal-color2 {
+  background-color:rgb(90, 166, 134);
+  color: white;
+}
+
+.cal-color3 {
+  background-color:rgb(51, 129, 96);
+  color: white;
+}
+
+.cal-color4 {
+  background-color:rgb(31, 109, 77);
+  color: white;
+}
+
+.cal-color5 {
+  background-color:rgb(9, 75, 48);
+  color: white;
+}
+
+.today {
+  animation: pulse 2s infinite;
+}
+
+.weekday {
+  color: hsl(0, 0.00%, 50%);
+  font-size: small;
+}
+
+@keyframes pulse {
+  50% { background-color: hsl(0, 0.00%, 50%); }
+  0%, 100% { background-color: hsl(0, 0.00%, 90%); }
+}
