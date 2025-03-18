@@ -3,7 +3,7 @@ Habit.destroy_all
 User.destroy_all
 
 puts "Creating users…"
-user = User.create(email_address: "m@m.com", password: "123456")
+user = User.create!(email_address: "lucas@lucas.com", password: "123456")
 
 puts "Creating habits…"
 habit1 = Habit.create(name: 'Routine', user: user)

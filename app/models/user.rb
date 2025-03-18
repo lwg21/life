@@ -8,6 +8,4 @@ class User < ApplicationRecord
   has_many :habit_logs, through: :habits
 
   validates :email_address, uniqueness: true
-  # validates :password, confirmation: true
-  # validates :password_confirmation, presence: true
 end

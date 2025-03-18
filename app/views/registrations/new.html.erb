@@ -1,0 +1,20 @@
+<h2>Sign up</h2>
+
+<%= form_with model: @user, url: registration_path do |form| %>
+  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
+  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Choose your password", maxlength: 72 %><br>
+  <%= form.password_field :password_confirmation, required: true, autocomplete: "current-password", placeholder: "Confirm your password", maxlength: 72 %><br>
+  <%= form.submit "Sign up" %>
+<% end %>
+<br>
+
+<% if @user.errors.any? %>
+  <div>
+    <%= @user.errors.full_messages.join(",") %>
+  </div>
+<% end %>
+
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+
+<%#= link_to "Forgot password?", new_password_path %>
