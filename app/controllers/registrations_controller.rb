@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
   allow_unauthenticated_access only: [ :new, :create ]
+  rate_limit to: 5, within: 3.minutes, only: :create, with: -> { redirect_to new_registration_url, alert: "Try again later." }
+
   def new
     @user = User.new
   end
@@ -10,10 +12,7 @@ class RegistrationsController < ApplicationController
       start_new_session_for @user
       redirect_to root_path
     else
-      Rails.logger.info(@user.errors.full_messages)
-      Rails.logger.info(@user.errors.inspect)
       render :new, status: :unprocessable_entity, alert: "Try another email address or password."
-      # redirect_to new_registration_path, alert: "Try another email address or password."
     end
   end
 
