@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   delete "habits/reset", to: "habits#reset_day", as: :reset_habits
   resources :habits, only: %i[new create]
   get "timer", to: "pages#timer"
+  get "style", to: "pages#style"
 end
