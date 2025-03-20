@@ -1,20 +1,18 @@
 class HabitsController < ApplicationController
   def index
+    @today = Date.today
     @habits = Current.user.habits
-    @date = Date.today
 
-    # Calendar
-    monthly_habits = Current.user.habit_logs
-      .select { |l| (@date.beginning_of_month..@date.end_of_month).include?(l.log_date) }
-      .group_by { |h| h.log_date.day }
+    habit_logs_grouped_by_date = Current.user.habit_logs
+      .select { |l| (@today.beginning_of_month..@today.end_of_month).include?(l.log_date) }
+      .group_by { |h| h.log_date }
       .transform_values! { |v| v.count }
 
     @calendar_data = {
-      date: @date,
-      data: monthly_habits,
-      top: @habits.count
+      today: @today,
+      logs: habit_logs_grouped_by_date,
+      habits_count: @habits.count
     }
-    p @calendar_data
   end
 
   def new

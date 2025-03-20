@@ -1,4 +1,4 @@
-<%# locals: (date:, data:, top:) -%>
+<%# locals: (today:, logs:, habits_count:) -%>
 
 <div class="calendar mb-m">
   <% Date::DAYNAMES.rotate(1).each do |dayname| %>
@@ -7,20 +7,20 @@
     </div>
   <% end %>
 
-  <% (date.beginning_of_month.cwday - 1).times do %>
+  <% (today.beginning_of_month.cwday - 1).times do %>
     <div class="square">
       <div class="cal-dot"></div>
     </div>
   <% end %>
 
-  <% (1..date.end_of_month.day).each do |i| %>
-    <% scale = data[i] ? (data[i].fdiv(top) * 5).ceil : 0 %>
-    <div class="square cal-color<%= scale %> <%= 'today' if date.day == i && scale == 0 %>">
-      <%= date.day if date.day == i %>
+  <% (today.beginning_of_month..today.end_of_month).each do |day| %>
+    <% scale = logs[day] ? (logs[day].fdiv(habits_count) * 5).ceil : 0 %>
+    <div class="square cal-color<%= scale %> <%= 'today' if today == day && scale == 0 %>">
+      <%= today.day if today == day %>
     </div>
   <% end %>
 
-  <% (7 - date.end_of_month.cwday).times do %>
+  <% (7 - today.end_of_month.cwday).times do %>
     <div class="square">
       <div class="cal-dot"></div>
     </div>
