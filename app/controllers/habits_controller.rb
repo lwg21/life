@@ -4,9 +4,9 @@ class HabitsController < ApplicationController
     @habits = Current.user.habits
 
     habit_logs_grouped_by_date = Current.user.habit_logs
-      .select { |l| (@today.beginning_of_month..@today.end_of_month).include?(l.log_date) }
-      .group_by { |h| h.log_date }
-      .transform_values! { |v| v.count }
+      .where(log_date: @today.beginning_of_month..@today.end_of_month)
+      .group(:log_date)
+      .count
 
     @calendar_data = {
       today: @today,
