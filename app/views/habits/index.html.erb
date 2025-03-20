@@ -7,7 +7,7 @@
         <% if habit.done_today? %>
           <div class="habit habit-done"><%= habit.name %></div>
         <% else %>
-          <%= link_to habit.name, done_habit_path(habit), data: { turbo_method: :post }, class: "habit" %>
+          <%= link_to habit.name, done_habit_path(habit), data: { turbo_method: :post, controller: "confetti", confetti_count_value: 10, action: "click->confetti#fire" }, class: "habit" %>
         <% end %>
       </div>
     <% end %>
