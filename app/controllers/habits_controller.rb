@@ -32,7 +32,14 @@ class HabitsController < ApplicationController
   def mark_done
     @habit = Habit.find(params[:id])
     @habit.done_today!
-    redirect_to root_path
+
+
+    index
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json
+    end
   end
 
   def reset_day
