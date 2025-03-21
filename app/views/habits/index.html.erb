@@ -1,22 +1,14 @@
-<%= render partial: "calendar", locals: @calendar_data %>
+<div data-controller="ajax">
+  <%= render partial: "calendar", locals: @calendar_data %>
 
-<div class="mb-s" data-ajax-target="habits">
-  <% @habits.each do |habit| %>
-    <div>
-      <% if habit.done_today? %>
-        <div class="habit habit-done"><%= habit.name %></div>
-      <% else %>
-        <%= link_to habit.name, done_habit_path(habit), data: { turbo_method: :post,  action: "click->ajax#done" }, class: "habit" %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+  <%= render partial: "habits", locals: { habits: @habits } %>
 
-<div>
-  <%= link_to reset_habits_path, data: { turbo_method: :delete }, class: "action-icon" do %>
-    <%= render "shared/icons/rotate" %>
-  <% end %>
-  <%= link_to new_habit_path, class: "action-icon" do %>
-    <%= render "shared/icons/square_plus" %>
-  <% end %>
+  <div>
+    <%= link_to reset_habits_path, data: { turbo_method: :delete }, class: "action-icon" do %>
+      <%= render "shared/icons/rotate" %>
+    <% end %>
+    <%= link_to new_habit_path, class: "action-icon" do %>
+      <%= render "shared/icons/square_plus" %>
+    <% end %>
+  </div>
 </div>

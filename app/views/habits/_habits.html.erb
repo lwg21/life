@@ -1,0 +1,11 @@
+<div class="mb-s" data-ajax-target="habits">
+  <% habits.each do |habit| %>
+    <div>
+      <% if habit.done_today? %>
+        <div class="habit habit-done"><%= habit.name %></div>
+      <% else %>
+        <%= link_to habit.name, done_habit_path(habit), data: { turbo_method: :post,  action: "click->ajax#done" }, class: "habit" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

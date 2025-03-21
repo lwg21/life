@@ -1,18 +1,6 @@
 class HabitsController < ApplicationController
   def index
-    @today = Date.today
-    @habits = Current.user.habits
-
-    habit_logs_grouped_by_date = Current.user.habit_logs
-      .where(log_date: @today.beginning_of_month..@today.end_of_month)
-      .group(:log_date)
-      .count
-
-    @calendar_data = {
-      today: @today,
-      logs: habit_logs_grouped_by_date,
-      habits_count: @habits.count
-    }
+    set_calendar_data
   end
 
   def new
@@ -33,8 +21,7 @@ class HabitsController < ApplicationController
     @habit = Habit.find(params[:id])
     @habit.done_today!
 
-
-    index
+    set_calendar_data
 
     respond_to do |format|
       format.html { redirect_to root_path }
@@ -51,5 +38,21 @@ class HabitsController < ApplicationController
 
   def habit_params
     params.expect(habit: :name)
+  end
+
+  def set_calendar_data
+    today = Date.today
+    @habits = Current.user.habits
+
+    habit_logs_grouped_by_date = Current.user.habit_logs
+      .where(log_date: today.beginning_of_month..today.end_of_month)
+      .group(:log_date)
+      .count
+
+    @calendar_data = {
+      today: today,
+      logs: habit_logs_grouped_by_date,
+      habits_count: @habits.length
+    }
   end
 end

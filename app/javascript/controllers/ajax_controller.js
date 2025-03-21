@@ -5,16 +5,12 @@ export default class extends Controller {
 
   static targets = ["habits", "calendar"]
 
-  connect() {
-    console.log("ajax");
-    console.log(this.calendarTarget);
-    console.log(this.habitsTarget);
-  }
-
   done(event) {
     event.preventDefault();
 
+    // Optimistic UI
     event.currentTarget.classList.add("habit-done");
+
     const url = event.currentTarget.href;
     const token = document.head.querySelector("meta[name=csrf-token]")?.content;
 
@@ -29,8 +25,8 @@ export default class extends Controller {
     fetch(url, options)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         this.calendarTarget.outerHTML = data.calendar;
+        this.habitsTarget.outerHTML = data.habits;
       })
   }
 }
