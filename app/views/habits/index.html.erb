@@ -1,3 +1,8 @@
+<style>
+  .square:first-child {
+    background: linear-gradient(to right, transparent, rgba(230, 230, 230, 0.6) 30%);
+  }
+</style>
 <% @habits.each do |habit| %>
   <div><%= habit.name %></div>
   <div class="calendar">
@@ -6,8 +11,5 @@
         <%= @today.day if @today == day %>
       </div>
     <% end %>
-  </div>
-  <div>
-    <%= link_to "see more", habit_path(habit) %>
   </div>
 <% end %>
