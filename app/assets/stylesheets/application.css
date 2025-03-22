@@ -16,7 +16,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
 
 :root {
-  --navbar-height: 80px;
+  --navbar-height: 110px;
   --main-padding: 30px;
   --font-primary: 'Open Sans', Times, serif;
   /* --font-primary: 'Spectral', Times, serif; */
