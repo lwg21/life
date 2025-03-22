@@ -1,8 +1,6 @@
 <div data-controller="ajax">
   <%= render partial: "calendar", locals: @calendar_data %>
-
   <%= render partial: "habits", locals: { habits: @habits } %>
-
   <div>
     <%= link_to reset_habits_path, data: { turbo_method: :delete }, class: "action-icon" do %>
       <%= render "shared/icons/rotate" %>

@@ -1,7 +1,21 @@
 <% if authenticated? %>
-  <%= link_to "home", root_path %>
-  <%= link_to "timer", timer_path %>
-  <%= link_to "log out", session_path, data: { turbo_method: :delete } if authenticated? %>
+  <%= link_to root_path do %>
+    <%= render "shared/icons/grid3x3" %>
+    <div>home</div>
+  <% end %>
+  <%= link_to "/" do %>
+    <%= render "shared/icons/award" %>
+    <div>awards</div>
+  <% end %>
+  <%= link_to timer_path do %>
+    <%= render "shared/icons/timer" %>
+    <div>timer</div>
+  <% end %>
+  <%= link_to "/" do %>
+    <%= render "shared/icons/user_settings" %>
+    <div>settings</div>
+  <% end %>
+  <%#= link_to "log out", session_path, data: { turbo_method: :delete } if authenticated? %>
 <% else %>
   <%#= link_to "log in", new_session_path unless authenticated? %>
 <% end %>

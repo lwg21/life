@@ -30,8 +30,8 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-rows: var(--navbar-height) 1fr;
-  min-height: 100vh;
+  grid-template-rows: 1fr var(--navbar-height);
+  height: 100vh;
   font-family: var(--font-primary);
   font-weight: 300;
 }
@@ -47,18 +47,37 @@ h2 {
 nav {
   background-color: #2d5586;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  & a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+  }
+
+  & svg {
+    height: 32px;
+    width: 32px;
+  }
+
+  & div {
+    font-size: small;
+  }
 }
 
-nav a {
-  color: white;
-}
 
 main {
   padding: var(--main-padding);
+  overflow-y: scroll;
 }
 
 .mb-s {
