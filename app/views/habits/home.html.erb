@@ -1,0 +1,5 @@
+<div data-controller="ajax">
+  <%= render partial: "calendar", locals: @calendar_data %>
+  <%= render partial: "habits", locals: { habits: @habits } %>
+  <%= render partial: "actions" %>
+</div>

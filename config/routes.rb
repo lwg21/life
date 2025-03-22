@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "habits#index"
+  root "habits#home"
   post "habits/:id/done", to: "habits#mark_done", as: :done_habit
   delete "habits/reset", to: "habits#reset_day", as: :reset_habits
-  resources :habits, only: %i[new create]
+  resources :habits, only: %i[index new create show]
   get "timer", to: "pages#timer"
   get "style", to: "pages#style"
 end

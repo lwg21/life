@@ -1,5 +1,11 @@
-<div data-controller="ajax">
-  <%= render partial: "calendar", locals: @calendar_data %>
-  <%= render partial: "habits", locals: { habits: @habits } %>
-  <%= render partial: "actions" %>
-</div>
+<% @habits.each do |habit| %>
+  <div><%= habit.name %></div>
+  <div class="calendar">
+    <% (1..7).each do |day| %>
+      <div class="square cal-color<%= rand(100) < 50 ? 3 : '0' %>"></div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "see more", habit_path(habit) %>
+  </div>
+<% end %>

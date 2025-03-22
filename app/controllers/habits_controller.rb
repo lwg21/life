@@ -1,6 +1,14 @@
 class HabitsController < ApplicationController
-  def index
+  def home
     set_calendar_data
+  end
+
+  def index
+    @habits = Current.user.habits
+  end
+
+  def show
+    @habit = Habit.find(params[:id])
   end
 
   def new
