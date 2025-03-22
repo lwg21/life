@@ -5,11 +5,13 @@ class HabitsController < ApplicationController
 
   def index
     @today = Date.today
+    @date_range = (@today - 6)..@today
     @habits = Current.user.habits
 
-    @habit_logs_grouped = Current.user.habit_logs
-      .where(log_date: (@today - 6)..@today)
+    @logs_by_habit_and_date = Current.user.habit_logs
+      .where(log_date: @date_range)
       .group(:habit_id, :log_date)
+      .count
   end
 
   def show
