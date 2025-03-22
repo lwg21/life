@@ -3,13 +3,13 @@
     <%= render "shared/icons/grid3x3" %>
     <div>home</div>
   <% end %>
+  <%= link_to "#" do %>
+    <%= render "shared/icons/list" %>
+    <div>habits</div>
+  <% end %>
   <%= link_to "#", class: "debug-grey" do %>
     <%= render "shared/icons/award" %>
-    <div>awards</div>
-  <% end %>
-  <%= link_to timer_path do %>
-    <%= render "shared/icons/timer" %>
-    <div>timer</div>
+    <div>unlocks</div>
   <% end %>
   <%= link_to "#", class: "debug-grey" do %>
     <%= render "shared/icons/user_settings" %>
