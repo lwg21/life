@@ -4,7 +4,12 @@ class HabitsController < ApplicationController
   end
 
   def index
+    @today = Date.today
     @habits = Current.user.habits
+
+    @habit_logs_grouped = Current.user.habit_logs
+      .where(log_date: (@today - 6)..@today)
+      .group(:habit_id, :log_date)
   end
 
   def show

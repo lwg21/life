@@ -1,8 +1,8 @@
 <% @habits.each do |habit| %>
   <div><%= habit.name %></div>
   <div class="calendar">
-    <% (1..7).each do |day| %>
-      <div class="square cal-color<%= rand(100) < 50 ? 3 : '0' %>"></div>
+    <% ((@today - 6)..@today).each do |day| %>
+      <div class="square cal-color<%= @habit_logs_grouped.find { |log| log.habit == habit && log.log_date == day } ? '3' : '0' %>"></div>
     <% end %>
   </div>
   <div>
