@@ -4,7 +4,7 @@
   }
 </style>
 <% @habits.each do |habit| %>
-  <div><%= habit.name %></div>
+  <div><%= habit.name %> (streak: <%= habit.streak %>)</div>
   <div class="calendar">
     <% @date_range.each do |day| %>
       <div class="square cal-color<%= @logs_by_habit_and_date[[habit.id, day]] ? '3' : '0' %>">

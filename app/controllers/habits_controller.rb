@@ -59,14 +59,14 @@ class HabitsController < ApplicationController
     today = Date.today
     @habits = Current.user.habits
 
-    habit_logs_grouped_by_date = Current.user.habit_logs
+    logs_by_date = Current.user.habit_logs
       .where(log_date: today.beginning_of_month..today.end_of_month)
       .group(:log_date)
       .count
 
     @calendar_data = {
       today: today,
-      logs: habit_logs_grouped_by_date,
+      logs: logs_by_date,
       habits_count: @habits.length
     }
   end
