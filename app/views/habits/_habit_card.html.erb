@@ -1,0 +1,15 @@
+<div>
+  <div class="habit-header">
+    <%= link_to habit.name, habit_path(habit) %>
+    <div><%= habit.streak %></div>
+  </div>
+  <div class="calendar">
+    <% @date_range.each do |day| %>
+      <div class="square cal-color<%= @logs_by_habit_and_date[[habit.id, day]] ? '3' : '0' %>">
+        <% if @today == day %>
+          <div style="font-size: 8pt;"><%= Date::DAYNAMES[@today.cwday][0..2] %><br><%= day.day %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

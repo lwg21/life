@@ -1,0 +1,26 @@
+.habits-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.habit-header {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  align-items: end;
+  font-size: smaller;
+  margin-bottom: 10px;
+
+  &>:first-child {
+    text-align: left;
+  }
+
+  &>:last-child {
+    font-size: 20pt;
+    font-weight: bold;
+  }
+}
+
+/* .streak-effect {
+  background-image: linear-gradient(45deg, #1896deb3 0% 15%, #ffffff00 15%);
+} */

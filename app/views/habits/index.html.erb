@@ -1,15 +1,3 @@
-<style>
-  .square:first-child {
-    background: linear-gradient(to right, transparent, rgba(230, 230, 230, 0.6) 30%);
-  }
-</style>
-<% @habits.each do |habit| %>
-  <div><%= link_to habit.name, habit_path(habit) %> (streak: <%= habit.streak %>)</div>
-  <div class="calendar">
-    <% @date_range.each do |day| %>
-      <div class="square cal-color<%= @logs_by_habit_and_date[[habit.id, day]] ? '3' : '0' %>">
-        <%= Date::DAYNAMES[@today.cwday][0] if @today == day %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<div class="habits-list">
+  <%= render partial: "habit_card", collection: @habits, as: :habit %>
+</div>
