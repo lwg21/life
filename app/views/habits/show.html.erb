@@ -1,2 +1,4 @@
-<%= @habit.name %>
+<div><%= @habit.name %></div>
 <%= render partial: "calendar", locals: @calendar_data %>
+<div><%= @habit.name %></div>
+<div>streak: <%= @habit.streak %></div>
