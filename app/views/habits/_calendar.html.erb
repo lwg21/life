@@ -16,7 +16,7 @@
   <% (today.beginning_of_month..today.end_of_month).each do |day| %>
   <%# (logs.keys.min..today.end_of_month).each do |day| %>
     <% scale = logs[day] ? (logs[day].fdiv(habits_count) * 5).ceil : 0 %>
-    <div class="square cal-color<%= scale %> <%= 'today' if today == day && scale == 0 %>">
+    <div class="square <%= 'today' if today == day && scale == 0 %>" data-level="<%= scale %>">
       <%= today.day if today == day %>
     </div>
   <% end %>
