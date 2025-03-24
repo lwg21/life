@@ -7,12 +7,14 @@
   <% end %>
 
   <% (today.beginning_of_month.cwday - 1).times do %>
+  <%# (logs.keys.min.cwday - 1).times do %>
     <div class="square">
       <div class="cal-dot"></div>
     </div>
   <% end %>
 
   <% (today.beginning_of_month..today.end_of_month).each do |day| %>
+  <%# (logs.keys.min..today.end_of_month).each do |day| %>
     <% scale = logs[day] ? (logs[day].fdiv(habits_count) * 5).ceil : 0 %>
     <div class="square cal-color<%= scale %> <%= 'today' if today == day && scale == 0 %>">
       <%= today.day if today == day %>

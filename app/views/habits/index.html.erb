@@ -4,11 +4,11 @@
   }
 </style>
 <% @habits.each do |habit| %>
-  <div><%= habit.name %> (streak: <%= habit.streak %>)</div>
+  <div><%= link_to habit.name, habit_path(habit) %> (streak: <%= habit.streak %>)</div>
   <div class="calendar">
     <% @date_range.each do |day| %>
       <div class="square cal-color<%= @logs_by_habit_and_date[[habit.id, day]] ? '3' : '0' %>">
-        <%= @today.day if @today == day %>
+        <%= Date::DAYNAMES[@today.cwday][0] if @today == day %>
       </div>
     <% end %>
   </div>
