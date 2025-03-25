@@ -1,4 +1,5 @@
 <div><%= @habit.name %></div>
 <%= render partial: "calendar", locals: @calendar_data %>
 <div><%= @habit.name %></div>
-<div>streak: <%= @habit.streak %></div>
+<div>current streak: <%= @habit.current_streak %></div>
+<div>longest streak: <%= @habit.longest_streak %></div>

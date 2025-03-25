@@ -10,7 +10,7 @@ class Habit < ApplicationRecord
     HabitLog.find_by(habit: self, log_date: Date.today).present?
   end
 
-  def streak
+  def current_streak
     logs_by_date = habit_logs.group(:log_date).count
     return 0 if logs_by_date.empty?
 
@@ -24,5 +24,27 @@ class Habit < ApplicationRecord
     end
 
     streak
+  end
+
+  def longest_streak
+    log_dates = habit_logs.order(log_date: :asc).pluck(:log_date)
+    return 0 if log_dates.empty?
+
+    streaks = []
+    streak = 1
+
+    log_dates.each_index do |index|
+      next if index.zero?
+
+      if (log_dates[index] - log_dates[index - 1]).to_i == 1
+        streak += 1
+      else
+        streaks << streak
+        streak = 1
+      end
+    end
+    streaks << streak
+
+    streaks.max
   end
 end
