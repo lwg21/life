@@ -1,0 +1,2 @@
+class Unlock < ApplicationRecord
+end
