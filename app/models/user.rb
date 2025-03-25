@@ -7,5 +7,8 @@ class User < ApplicationRecord
   has_many :habits, dependent: :destroy
   has_many :habit_logs, through: :habits
 
+  has_many :unlocks, dependent: :destroy
+  has_many :goals, through: :unlocks
+
   validates :email_address, uniqueness: true
 end
