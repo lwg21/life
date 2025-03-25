@@ -3,11 +3,11 @@
     <%= render "shared/icons/grid3x3" %>
     <div>home</div>
   <% end %>
-  <%= link_to habits_path do %>
+  <%= link_to habits_path, class: "debug-grey" do %>
     <%= render "shared/icons/list" %>
     <div>habits</div>
   <% end %>
-  <%= link_to "#", class: "debug-grey" do %>
+  <%= link_to goals_path, class: "debug-grey" do %>
     <%= render "shared/icons/award" %>
     <div>unlocks</div>
   <% end %>
