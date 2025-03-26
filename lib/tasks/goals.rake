@@ -1,7 +1,7 @@
 namespace :goals do
   desc "Populate the database with goals (add new)"
-  task populate: :environment do
-    goal_data = [
+  task update: :environment do
+    goals_data = [
       {
         name: "3-day streak",
         code: "streak_day_3",
@@ -18,12 +18,26 @@ namespace :goals do
         description: "Do a habit 15 days in a row"
       },
       {
+        name: "30-day streak",
+        code: "streak_day_30",
+        description: "Do a habit 30 days in a row"
+      },
+      {
         name: "Full month",
         code: "streak_calendar_month_1",
         description: "Do a habit every day for a calendar month"
       }
     ]
-    # TODO: make idempotent
-    goal_data.each { |data| Goal.create!(data) }
+
+    goals_data.each do |data|
+      goal = Goal.find_by(code: data[:code])
+      if goal
+        goal.update!(data)
+        puts "Updated #{goal.code}"
+      else
+        new_goal = Goal.create!(data)
+        puts "Created #{new_goal.code}"
+      end
+    end
   end
 end

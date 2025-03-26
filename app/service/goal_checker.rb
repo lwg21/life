@@ -5,9 +5,7 @@ class GoalChecker
 
   def check_goals
     goals = Goal.where.not(id: @user.goals.select(:goal_id))
-    goals.each do |goal|
-      @user.unlock(goal) if check_goal(goal)
-    end
+    goals.each { |goal| @user.unlock(goal) if check_goal(goal) }
   end
 
   private
@@ -20,6 +18,8 @@ class GoalChecker
       @user.habits.any? { |habit| habit.longest_streak >= 7 }
     when "streak_day_15"
       @user.habits.any? { |habit| habit.longest_streak >= 15 }
+    when "streak_day_30"
+      @user.habits.any? { |habit| habit.longest_streak >= 30 }
     else
       false
     end
