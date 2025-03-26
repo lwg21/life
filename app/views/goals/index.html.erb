@@ -1,6 +1,6 @@
 <div class="goals">
   <% @goals.each do |goal| %>
-    <div class="goal">
+    <div class="goal <%= 'unlocked' if @unlocked_goal_ids.include?(goal.id) %>">
       <%= goal.name %>
     </div>
   <% end %>

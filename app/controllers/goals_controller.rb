@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   def index
     @goals = Goal.all
-    @unlocks = Current.user.unlocks
+    @unlocked_goal_ids = Current.user.goals.pluck(:id)
   end
 end
