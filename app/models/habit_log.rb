@@ -1,7 +1,7 @@
 class HabitLog < ApplicationRecord
   belongs_to :habit
 
-  after_create :check_goals
+  # after_create :check_goals
 
   def check_goals
     # TODO
