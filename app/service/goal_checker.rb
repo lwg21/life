@@ -15,13 +15,10 @@ class GoalChecker
   def check_goal(goal)
     case goal.code
     when "streak_day_3"
-      puts "Checking 3 day streak"
       @user.habits.any? { |habit| habit.longest_streak >= 3 }
     when "streak_day_7"
-      puts "Checking 7 day streak"
       @user.habits.any? { |habit| habit.longest_streak >= 7 }
     when "streak_day_15"
-      puts "Checking 15 day streak"
       @user.habits.any? { |habit| habit.longest_streak >= 15 }
     else
       false

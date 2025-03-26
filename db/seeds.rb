@@ -7,31 +7,6 @@ puts "Creating users…"
 user1 = User.create!(email_address: "lucas@lucas.com", password: "123456")
 user2 = User.create!(email_address: "paul@paul.com", password: "123456")
 
-puts "Creating goals…"
-goal_data = [
-  {
-    name: "3-day streak",
-    code: :streak_day_3,
-    description: "Do a habit 3 days in a row"
-  },
-  {
-    name: "7-day streak",
-    code: :streak_day_7,
-    description: "Do a habit 7 days in a row"
-  },
-  {
-    name: "15-day streak",
-    code: :streak_day_15,
-    description: "Do a habit 15 days in a row"
-  },
-  {
-    name: "Full month",
-    code: :streak_calendar_month_1,
-    description: "Do a habit every day for a calendar month"
-  }
-]
-goal_data.each { |data| Goal.create!(data) }
-
 puts "Creating habits…"
 habit1 = Habit.create!(name: 'Routine', user: user1)
 habit2 = Habit.create!(name: 'Meditation', user: user1)
