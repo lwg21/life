@@ -11,4 +11,12 @@ class User < ApplicationRecord
   has_many :goals, through: :unlocks
 
   validates :email_address, uniqueness: true
+
+  def unlock(goal)
+    Unlock.create(user: self, goal: goal)
+  end
+
+  def check_goals
+    GoalChecker.new(self).check_goals
+  end
 end

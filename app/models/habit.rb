@@ -10,6 +10,16 @@ class Habit < ApplicationRecord
     HabitLog.find_by(habit: self, log_date: Date.today).present?
   end
 
+  def log(date)
+    HabitLog.create(habit: self, log_date: date)
+  end
+
+  def log_range(date_range)
+    date_range.each do |date|
+      HabitLog.create(habit: self, log_date: date)
+    end
+  end
+
   def current_streak
     logs_by_date = habit_logs.group(:log_date).count
     return 0 if logs_by_date.empty?

@@ -47,7 +47,9 @@ class HabitsController < ApplicationController
 
   def mark_done
     @habit = Habit.find(params[:id])
-    @habit.done_today!
+    @habit.log(Date.today)
+
+    Current.user.check_goals
 
     set_calendar_data
 
