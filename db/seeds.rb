@@ -28,4 +28,9 @@ today = Date.today
   habit7.habit_logs.create!(log_date: today + n) if rand(100) < 40
 end
 
+Rake::Task['goals:update'].invoke
+
+puts "Checking unlocked goals…"
+User.all.each { |user| user.check_goals }
+
 puts "Seeding done!"

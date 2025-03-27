@@ -5,17 +5,25 @@
 }
 
 .goal {
-  background-color: papayawhip;
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  font-size: medium;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.unlocked {
-  background-color: brown;
+.hidden {
+  background-color: grey;
 }
 
 .locked {
-  background-color: grey;
+  color: #adaaaa;
+  background-color: #eaeaea;
+}
+
+.streak {
+  background: linear-gradient(#74e9dc 10%, #60ddcf 20%, #59eb8f 100%)
 }

@@ -1,22 +1,22 @@
 <% @goals.group_by(&:category).each do |category, goals| %>
-  <div><%= category.capitalize %></div>
+  <h2><%= category.capitalize %></h2>
   <div class="goals">
     <% goals.each do |goal| %>
-      <% if @unlocks_data.key?(goal.id) %>
+      <% if !@unlocks_data.key?(goal.id) %>
+        <div class="goal locked">
+          <%= goal.name %> 🔒
+        </div>
+      <% elsif !@unlocks_data[goal.id] %>
         <%= link_to goal_path(goal) do %>
-          <div class="goal">
-            <%= goal.name %>
-            <%= "hidden!" unless @unlocks_data[goal.id] %>
+          <div class="goal hidden">
+            <%= goal.name %> 🎊
           </div>
         <% end %>
       <% else %>
-        <div class="goal locked">
+        <div class="goal streak">
           <%= goal.name %>
         </div>
       <% end %>
-
-
-
     <% end %>
   </div>
 <% end %>
