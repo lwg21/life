@@ -6,7 +6,7 @@
 
 .habit-header {
   display: grid;
-  grid-template-columns: 6fr 1fr;
+  grid-template-columns: 6fr 3fr;
   align-items: end;
   font-size: smaller;
   margin-bottom: 10px;
@@ -16,6 +16,7 @@
   }
 
   &>:last-child {
+    text-align: right;
     font-size: 20pt;
     font-weight: bold;
   }

@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_25_113921) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_26_204337) do
   create_table "goals", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
+    t.integer "target_value"
     t.index ["code"], name: "index_goals_on_code", unique: true
   end
 
