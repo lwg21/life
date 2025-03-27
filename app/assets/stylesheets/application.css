@@ -42,41 +42,6 @@ a {
   text-decoration: none;
 }
 
-nav {
-  background-color: #2d5586;
-  color: white;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: var(--navbar-height);
-  width: 100vw;
-  padding-bottom: 10px;
-
-  & a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    color: white;
-    text-decoration: none;
-    height: 100%;
-    width: 100%;
-  }
-
-  & svg {
-    height: 32px;
-    width: 32px;
-  }
-
-  & div {
-    font-size: small;
-  }
-}
-
-
 main {
   padding: var(--main-padding);
   overflow-y: scroll;
@@ -126,7 +91,6 @@ main {
   }
 }
 
-.debug-grey {
-  color: rgb(118, 118, 118) !important;
-  opacity: 0.2 !important;
+.debug {
+  color: black;
 }

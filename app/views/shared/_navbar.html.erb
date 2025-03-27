@@ -3,15 +3,16 @@
     <%= render "shared/icons/grid3x3" %>
     <div>home</div>
   <% end %>
-  <%= link_to habits_path, class: "debug-grey" do %>
+  <%= link_to habits_path, class: "debug" do %>
     <%= render "shared/icons/list" %>
     <div>habits</div>
   <% end %>
-  <%= link_to goals_path, class: "debug-grey" do %>
+  <%= link_to goals_path, class: "debug" do %>
+    <%= tag.span class: "notification" %>
     <%= render "shared/icons/award" %>
     <div>unlocks</div>
   <% end %>
-  <%= link_to "#", class: "debug-grey" do %>
+  <%= link_to "#", class: "debug" do %>
     <%= render "shared/icons/user_settings" %>
     <div>settings</div>
   <% end %>
