@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post "habits/:id/done", to: "habits#mark_done", as: :done_habit
   delete "habits/reset", to: "habits#reset_day", as: :reset_habits
   resources :habits, only: %i[index new create show]
-  resources :goals, only: %i[index]
+  resources :goals, only: %i[index show]
   get "timer", to: "pages#timer"
   get "style", to: "pages#style"
 end

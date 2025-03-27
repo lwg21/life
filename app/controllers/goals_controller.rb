@@ -1,6 +1,12 @@
 class GoalsController < ApplicationController
   def index
     @goals = Goal.all
-    @unlocked_goal_ids = Current.user.goals.pluck(:id)
+    @unlocks_data = Current.user.unlocks.pluck(:goal_id, :seen_at).to_h
+  end
+
+  def show
+    @goal = Goal.find(params[:id])
+    unlock = Unlock.find_by(goal: @goal, user: Current.user)
+    unlock.update(seen_at: Time.now) if unlock
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_26_204337) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_27_081722) do
   create_table "goals", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_26_204337) do
     t.integer "goal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "seen_at"
     t.index ["goal_id"], name: "index_unlocks_on_goal_id"
     t.index ["user_id", "goal_id"], name: "index_unlocks_on_user_id_and_goal_id", unique: true
     t.index ["user_id"], name: "index_unlocks_on_user_id"

@@ -2,9 +2,21 @@
   <div><%= category.capitalize %></div>
   <div class="goals">
     <% goals.each do |goal| %>
-      <div class="goal <%= 'unlocked' if @unlocked_goal_ids.include?(goal.id) %>">
-        <%= goal.name %>
-      </div>
+      <% if @unlocks_data.key?(goal.id) %>
+        <%= link_to goal_path(goal) do %>
+          <div class="goal">
+            <%= goal.name %>
+            <%= "hidden!" unless @unlocks_data[goal.id] %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="goal locked">
+          <%= goal.name %>
+        </div>
+      <% end %>
+
+
+
     <% end %>
   </div>
 <% end %>

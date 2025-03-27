@@ -15,3 +15,7 @@
 .unlocked {
   background-color: brown;
 }
+
+.locked {
+  background-color: grey;
+}
