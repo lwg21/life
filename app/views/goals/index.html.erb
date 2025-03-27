@@ -2,11 +2,12 @@
   <h2><%= category.capitalize %></h2>
   <div class="goals">
     <% goals.each do |goal| %>
-      <% if !@unlocks_data.key?(goal.id) %>
+      <% unlock = goal.unlocks.find { |u| u.user_id == @user_id } %>
+      <% if !unlock %>
         <div class="goal locked">
           <%= goal.name %> 🔒
         </div>
-      <% elsif !@unlocks_data[goal.id] %>
+      <% elsif !unlock.seen_at %>
         <%= link_to goal_path(goal) do %>
           <div class="goal hidden">
             <%= goal.name %> 🎊

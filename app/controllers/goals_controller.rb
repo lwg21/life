@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
   def index
-    @goals = Goal.all
-    @unlocks_data = Current.user.unlocks.pluck(:goal_id, :seen_at).to_h
+    @user_id = Current.user.id
+    @goals = Goal.all.includes(:unlocks)
   end
 
   def show
