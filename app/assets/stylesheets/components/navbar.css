@@ -17,7 +17,7 @@ nav {
     align-items: center;
     justify-content: center;
     gap: 3px;
-    color: #6f6f6f;
+    color: #929292;
     text-decoration: none;
     height: 100%;
     width: 100%;
@@ -31,6 +31,10 @@ nav {
 
   & div {
     font-size: small;
+  }
+
+  .active {
+    color: #3d3d3d
   }
 
 }
