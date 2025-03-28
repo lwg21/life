@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
   def index
     @user_id = Current.user.id
-    @goals = Goal.all.includes(:unlocks)
+    @goals = Goal.all.includes(:unlocks).order(:category, :target_value)
   end
 
   def show

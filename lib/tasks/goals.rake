@@ -10,49 +10,49 @@ namespace :goals do
       {
         name: "3-day streak",
         code: "streak-day-3",
-        category: "streak",
+        category: "1:streak",
         target_value: 3,
         description: "Do a habit 3 days in a row"
       },
       {
         name: "7-day streak",
         code: "streak-day-7",
-        category: "streak",
+        category: "1:streak",
         target_value: 7,
         description: "Do a habit 7 days in a row"
       },
       {
         name: "15-day streak",
         code: "streak-day-15",
-        category: "streak",
+        category: "1:streak",
         target_value: 15,
         description: "Do a habit 15 days in a row"
       },
       {
         name: "30-day streak",
         code: "streak-day-30",
-        category: "streak",
+        category: "1:streak",
         target_value: 30,
         description: "Do a habit 30 days in a row"
       },
       {
         name: "Full month",
         code: "streak-calendar-month-1",
-        category: "specials",
+        category: "2:specials",
         target_value: 1,
         description: "Do a habit every day for a calendar month"
       },
       {
         name: "Weekend warrior",
         code: "weekend-warrior",
-        category: "specials",
+        category: "2:specials",
         target_value: 1,
         description: "Do a habit every day for a calendar month"
       },
       {
         name: "Monday monk",
         code: "monday-monk",
-        category: "specials",
+        category: "2:specials",
         target_value: 1,
         description: "Do a habit every day for a calendar month"
       }

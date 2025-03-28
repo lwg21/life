@@ -1,23 +1,21 @@
-<% @goals.group_by(&:category).each do |category, goals| %>
-  <h2><%= category.capitalize %></h2>
-  <div class="goals">
-    <% goals.each do |goal| %>
-      <% unlock = goal.unlocks.find { |u| u.user_id == @user_id } %>
-      <% if !unlock %>
-        <div class="goal locked">
-          <%= goal.name %> 🔒
-        </div>
-      <% elsif !unlock.seen_at %>
-        <%= link_to goal_path(goal) do %>
-          <div class="goal hidden">
-            <%= goal.name %> 🎊
-          </div>
-        <% end %>
-      <% else %>
-        <div class="goal streak">
-          <%= goal.name %>
+<div class="goals">
+  <% @goals.each do |goal| %>
+    <% unlock = goal.unlocks.find { |u| u.user_id == @user_id } %>
+    <% if !unlock %>
+      <div class="goal locked">
+        <%= goal.name %>
+        <%= render "shared/icons/lock" %>
+      </div>
+    <% elsif !unlock.seen_at %>
+      <%= link_to goal_path(goal) do %>
+        <div class="goal hidden">
+          <%= goal.name %> 🎊
         </div>
       <% end %>
+    <% else %>
+      <div class="goal streak">
+        <%= goal.name %>
+      </div>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
