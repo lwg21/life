@@ -6,7 +6,6 @@ class GoalChecker
   def check_goals
     goals = Goal.where.not(id: @user.goals.select(:goal_id))
     goals.each { |goal| @user.unlock(goal) if check_goal(goal) }
-    binding.irb
   end
 
   private
