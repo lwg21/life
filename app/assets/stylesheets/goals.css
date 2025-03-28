@@ -27,16 +27,16 @@
 }
 
 .hidden {
-  background: linear-gradient(
-    #dfe981,
-    #4e827a
-  );
+  background: linear-gradient(45deg, #a9a9a9, #3e3e3e);
+
+  &>svg {
+    color: white;
+  }
 }
 
 .locked {
   color: #adaaaa;
   background-color: #eaeaea;
-  background: linear-gradient(#efefef 30%, #cdcdcd);
 }
 
 .streak {

@@ -12,6 +12,7 @@
         <%= link_to goal_path(goal), class: "goal hidden" do %>
           <%= render "shared/icons/sparkles" %>
         <% end %>
+        <div class="goal-name">New!</div>
       </div>
     <% else %>
       <div>
@@ -22,5 +23,14 @@
         </div>
       </div>
     <% end %>
+  <% end %>
+
+  <%# DEBUG %>
+  <% 30.times do %>
+    <div>
+      <div class="goal locked">
+        <%= render "shared/icons/lock" %>
+      </div>
+    </div>
   <% end %>
 </div>

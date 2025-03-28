@@ -1,7 +1,7 @@
 <div>
   <div class="habit-header">
     <%= link_to habit.name, habit_path(habit) %>
-    <div><%= habit.current_streak %> (<%= habit.longest_streak %>)</div>
+    <div>streak: <%= habit.current_streak %>, best: <%= habit.longest_streak %>, total: <%= habit.habit_logs.size %></div>
   </div>
   <div class="calendar">
     <% @date_range.each do |day| %>
