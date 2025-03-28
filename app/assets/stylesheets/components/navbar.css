@@ -1,7 +1,7 @@
 
 nav {
-  background-color: #2d5586;
-  color: white;
+  background-color: #d4d4d4;
+  color: #111111;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   position: fixed;
@@ -17,7 +17,7 @@ nav {
     align-items: center;
     justify-content: center;
     gap: 3px;
-    color: white;
+    color: #6f6f6f;
     text-decoration: none;
     height: 100%;
     width: 100%;

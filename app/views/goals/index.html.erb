@@ -2,19 +2,28 @@
   <% @goals.each do |goal| %>
     <% unlock = goal.unlocks.find { |u| u.user_id == @user_id } %>
     <% if !unlock %>
-      <div class="goal locked">
-        <%= goal.name %>
-        <%= render "shared/icons/lock" %>
+      <div>
+        <div class="goal locked">
+          <%= render "shared/icons/lock" %>
+        </div>
+        <div class="goal-name">
+          <%= goal.name %>
+        </div>
       </div>
     <% elsif !unlock.seen_at %>
-      <%= link_to goal_path(goal) do %>
-        <div class="goal hidden">
-          <%= goal.name %> 🎊
-        </div>
-      <% end %>
+      <div>
+        <%= link_to goal_path(goal), class: "goal hidden" do %>
+          <%= render "shared/icons/sparkles" %>
+        <% end %>
+        <div class="goal-name"><%#= goal.name %></div>
+      </div>
     <% else %>
-      <div class="goal streak">
-        <%= goal.name %>
+      <div>
+        <div class="goal streak">
+        </div>
+        <div class="goal-name">
+          <%= goal.name %>
+        </div>
       </div>
     <% end %>
   <% end %>

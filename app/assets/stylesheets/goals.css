@@ -2,6 +2,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
+
+  a {
+    color: black;
+  }
 }
 
 .goal {
@@ -11,19 +15,35 @@
   align-items: center;
   flex-direction: column;
   font-size: medium;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.goal-name {
+  font-size: small;
+  font-weight: bold;
+  padding-top: 5px;
+  height: 2rem;
 }
 
 .hidden {
-  background-color: grey;
+  background: linear-gradient(
+    #dfe981,
+    #4e827a
+  );
 }
 
 .locked {
   color: #adaaaa;
   background-color: #eaeaea;
+  background: linear-gradient(#efefef 30%, #cdcdcd);
 }
 
 .streak {
-  background: linear-gradient(#74e9dc 10%, #60ddcf 20%, #59eb8f 100%)
+  background: conic-gradient(
+    from 90deg at 0 0,
+    #b8d3f5 40deg,
+    #12335c 40deg 70deg,
+    #68a4f0 70deg 90deg
+  );
 }
