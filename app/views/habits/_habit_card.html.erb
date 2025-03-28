@@ -6,9 +6,6 @@
   <div class="calendar">
     <% @date_range.each do |day| %>
       <div class="square" data-level="<%= @logs_by_habit_and_date[[habit.id, day]] ? '3' : '0' %>">
-        <% if @today == day %>
-          <div style="font-size: 8pt;"><%= Date::DAYNAMES[@today.cwday][0..2] %><br><%= day.day %></div>
-        <% end %>
       </div>
     <% end %>
   </div>

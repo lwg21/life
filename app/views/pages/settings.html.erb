@@ -1,1 +1,6 @@
-<%= link_to "log out", session_path, data: { turbo_method: :delete } if authenticated? %>
+<div>
+  <%= link_to "styles", style_path %>
+</div>
+<div>
+  <%= link_to "log out", session_path, data: { turbo_method: :delete } %>
+</div>
