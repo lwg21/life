@@ -66,8 +66,12 @@ class HabitsController < ApplicationController
 
   def destroy
     habit = Habit.find(params[:id])
-    habit.destroy
-    redirect_to root_path, notice: "#{habit.name} was successfully destroyed."
+    if habit.user == Current.user
+      habit.destroy
+      redirect_to root_path, notice: "#{habit.name} was successfully destroyed."
+    else
+      redirect_to (request.referrer || root_path), notice: "You are not authorized to perform this action."
+    end
   end
 
   private
