@@ -1,6 +1,8 @@
 module ApplicationHelper
+  # Render SVG icon partials inline + memoization
   def icon(name)
-    render "shared/icons/#{name}"
+    @icons ||= {}
+    @icons[name] ||= render "shared/icons/#{name}"
   end
 
   def navbar_active?(section, params)
