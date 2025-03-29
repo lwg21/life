@@ -1,0 +1,4 @@
+/* Disable blue highlight on link and button click on mobile */
+a,button {
+  -webkit-tap-highlight-color: transparent;
+}
