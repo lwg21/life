@@ -19,28 +19,28 @@ namespace :goals do
     goals_data = [
       {
         name: "3-day streak",
-        code: "streak-day-3",
+        code: "streak-days-3",
         category: "1:streak",
         target_value: 3,
         description: "Do a habit 3 days in a row"
+      },
+      {
+        name: "7-day streak",
+        code: "streak-days-7",
+        category: "1:streak",
+        target_value: 7,
+        description: "Do a habit 7 days in a row"
+      },
+      {
+        name: "15-day streak",
+        code: "streak-days-15",
+        category: "1:streak",
+        target_value: 15,
+        description: "Do a habit 15 days in a row"
       }
       # {
-      #   name: "7-day streak",
-      #   code: "streak-day-7",
-      #   category: "1:streak",
-      #   target_value: 7,
-      #   description: "Do a habit 7 days in a row"
-      # },
-      # {
-      #   name: "15-day streak",
-      #   code: "streak-day-15",
-      #   category: "1:streak",
-      #   target_value: 15,
-      #   description: "Do a habit 15 days in a row"
-      # },
-      # {
       #   name: "30-day streak",
-      #   code: "streak-day-30",
+      #   code: "streak-days-30",
       #   category: "1:streak",
       #   target_value: 30,
       #   description: "Do a habit 30 days in a row"
