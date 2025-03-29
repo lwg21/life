@@ -60,7 +60,7 @@ class HabitsController < ApplicationController
   end
 
   def reset_day
-    HabitLog.where(log_date: Date.today).destroy_all
+    Current.user.habit_logs.where(log_date: Date.today).destroy_all
     redirect_to root_path
   end
 
