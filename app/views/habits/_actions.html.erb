@@ -1,14 +1,14 @@
 <div class="actions">
   <%= link_to reset_habits_path, data: { turbo_method: :delete } do %>
-    <%= render "shared/icons/rotate" %>
+    <%= icon :rotate %>
     <div>reset day</div>
   <% end %>
   <%= link_to new_habit_path do %>
-    <%= render "shared/icons/square_plus" %>
+    <%= icon :square_plus %>
     <div>add habit</div>
   <% end %>
   <%= link_to timer_path do %>
-    <%= render "shared/icons/timer" %>
+    <%= icon :timer %>
     <div>timer</div>
   <% end %>
 </div>
