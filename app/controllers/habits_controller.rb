@@ -64,6 +64,12 @@ class HabitsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    habit = Habit.find(params[:id])
+    habit.destroy
+    redirect_to root_path, notice: "#{habit.name} was successfully destroyed."
+  end
+
   private
 
   def habit_params

@@ -4,3 +4,5 @@
 <div>current streak: <%= @habit.current_streak %></div>
 <div>longest streak: <%= @habit.longest_streak %></div>
 <div>all-time total: <%= @habit.habit_logs.size %></div>
+
+<%= link_to "Delete habit", habit_path(@habit), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
