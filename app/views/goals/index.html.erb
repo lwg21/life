@@ -4,13 +4,13 @@
     <% if !unlock %>
       <div>
         <div class="goal locked">
-          <%= render "shared/icons/lock" %>
+          <%= icon :lock %>
         </div>
       </div>
     <% elsif !unlock.seen_at %>
       <div>
         <%= link_to goal_path(goal), class: "goal hidden" do %>
-          <%= render "shared/icons/sparkles" %>
+          <%= icon :sparkles %>
         <% end %>
         <div class="goal-name">New!</div>
       </div>
@@ -29,7 +29,7 @@
   <% 30.times do %>
     <div>
       <div class="goal locked">
-        <%= render "shared/icons/lock" %>
+        <%= icon(:lock) %>
       </div>
     </div>
   <% end %>

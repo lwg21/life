@@ -1,20 +1,20 @@
 <nav>
   <% if authenticated? %>
     <%= link_to root_path, class: navbar_active?(:home, params) do %>
-      <%= render "shared/icons/grid3x3" %>
+      <%= icon :grid3x3 %>
       <div>home</div>
     <% end %>
     <%= link_to habits_path, class: navbar_active?(:habits, params) do %>
-      <%= render "shared/icons/list" %>
+      <%= icon :list %>
       <div>habits</div>
     <% end %>
     <%= link_to goals_path, class: navbar_active?(:unlocks, params) do %>
       <%#= tag.span class: "notification" %>
-      <%= render "shared/icons/award" %>
+      <%= icon :award %>
       <div>unlocks</div>
     <% end %>
     <%= link_to settings_path, class: navbar_active?(:settings, params) do %>
-      <%= render "shared/icons/user_settings" %>
+      <%= icon :user_settings %>
       <div>settings</div>
     <% end %>
   <% else %>

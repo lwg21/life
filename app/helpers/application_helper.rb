@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def icon(name)
+    render "shared/icons/#{name}"
+  end
+
   def navbar_active?(section, params)
     active = case section
     when :home
