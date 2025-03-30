@@ -1,5 +1,5 @@
 <div data-controller="ajax">
-  <%= render partial: "calendar", locals: @calendar_data %>
+  <%= render partial: "calendar", locals: { calendar: @calendar } %>
 
   <div class="habits" data-ajax-target="habits">
     <%= render partial: "habit", collection: @habits, locals: @habits_data %>

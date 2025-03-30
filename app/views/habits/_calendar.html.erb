@@ -1,27 +1,22 @@
-<%# locals: (today:, logs:, habits_count:) -%>
+<%# locals: (calendar:) -%>
 <div class="calendar mb-m" data-ajax-target="calendar">
-  <% Date::DAYNAMES.rotate(1).each do |dayname| %>
-    <div class="square weekday">
-      <%= dayname[0] %>
-    </div>
+  <% calendar.week_days.each do |dayname| %>
+    <div class="square weekday"><%= dayname %></div>
   <% end %>
 
-  <% (today.beginning_of_month.cwday - 1).times do %>
-  <%# (logs.keys.min.cwday - 1).times do %>
+  <% calendar.padding_days_start.times do %>
     <div class="square">
       <div class="cal-dot"></div>
     </div>
   <% end %>
 
-  <% (today.beginning_of_month..today.end_of_month).each do |day| %>
-  <%# (logs.keys.min..today.end_of_month).each do |day| %>
-    <% scale = logs[day] ? (logs[day].fdiv(habits_count) * 5).ceil : 0 %>
-    <div class="square <%= 'today' if today == day && scale == 0 %>" data-level="<%= scale %>">
-      <%= today.day if today == day %>
+  <% calendar.date_range.each do |day| %>
+    <div class="square <%= 'today' if calendar.no_log_today?(day) %>" data-level="<%= calendar.level(day) %>">
+      <%= day.day if day.today? %>
     </div>
   <% end %>
 
-  <% (7 - today.end_of_month.cwday).times do %>
+  <% calendar.padding_days_end.times do %>
     <div class="square">
       <div class="cal-dot"></div>
     </div>

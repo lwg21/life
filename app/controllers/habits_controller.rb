@@ -3,15 +3,6 @@ class HabitsController < ApplicationController
     today = Date.today
     @habits = Current.user.habits
 
-    @calendar_data = {
-      today: today,
-      habits_count: @habits.count,
-      logs: Current.user.habit_logs
-        .where(log_date: today.beginning_of_month..today.end_of_month)
-        .group(:log_date)
-        .count
-    }
-
     date_range = (today - 6)..(today)
     @habits_data = {
       date_range: date_range,
@@ -20,6 +11,8 @@ class HabitsController < ApplicationController
         .group(:habit_id, :log_date)
         .count
     }
+
+    @calendar = CalendarPresenter.new(Current.user)
   end
 
   def show
