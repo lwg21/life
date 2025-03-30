@@ -57,7 +57,7 @@
     justify-content: center;
     aspect-ratio: 1 / 1;
     align-content: center;
-    color: white;
+    color: rgb(230, 230, 230);
     background-color: white;
     border-radius: 50%;
   }

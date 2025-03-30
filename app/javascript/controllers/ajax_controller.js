@@ -11,7 +11,7 @@ export default class extends Controller {
     const card = event.currentTarget.closest(".habit-card");
 
     // Optimistic UI
-    event.currentTarget.classList.add("habit-done");
+    event.currentTarget.classList.add("done");
 
     const url = event.currentTarget.href;
     const token = document.head.querySelector("meta[name=csrf-token]")?.content;
