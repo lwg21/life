@@ -5,7 +5,7 @@
         <%= habit.name %>
       </div>
       <div class="streak">
-        <strong><%= habit.current_streak %></strong> streak, <strong><%= habit.habit_logs.size %></strong> total
+        <strong><%= habit.habit_logs.size %></strong> total, <strong><%= habit.current_streak %></strong> streak
       </div>
       <div class="week">
         <% date_range.each do |day| %>
