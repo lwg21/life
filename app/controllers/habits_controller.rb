@@ -1,18 +1,9 @@
 class HabitsController < ApplicationController
   def index
-    today = Date.today
-    @habits = Current.user.habits
-
-    date_range = (today - 6)..(today)
-    @habits_data = {
-      date_range: date_range,
-      logs: Current.user.habit_logs
-        .where(log_date: date_range)
-        .group(:habit_id, :log_date)
-        .count
-    }
-
-    @calendar = CalendarPresenter.new(Current.user)
+    user = Current.user
+    @habits = user.habits
+    @calendar = CalendarPresenter.new(user)
+    @habits_presenter = HabitCollectionPresenter.new(user)
   end
 
   def show

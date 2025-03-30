@@ -2,7 +2,7 @@
   <%= render partial: "calendar", locals: { calendar: @calendar } %>
 
   <div class="habits" data-ajax-target="habits">
-    <%= render partial: "habit", collection: @habits, locals: @habits_data %>
+    <%= render partial: "habit", collection: @habits, locals: { habits_presenter: @habits_presenter } %>
   </div>
 
   <div class="actions">

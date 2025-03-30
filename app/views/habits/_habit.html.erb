@@ -1,4 +1,4 @@
-<%# locals: (habit:, date_range:, logs:) -%>
+<%# locals: (habits_presenter:, habit:) -%>
 <div class="habit-card">
   <%= link_to habit_path(habit) do %>
     <div class="info">
@@ -6,22 +6,23 @@
         <%= habit.name %>
       </div>
       <div class="streak">
-        <strong><%= habit.habit_logs.size %></strong> total, <strong><%= habit.current_streak %></strong> streak
+        <strong><%= habits_presenter.total_count(habit) %></strong> total, <strong><%= habits_presenter.current_streak(habit) %></strong> streak
       </div>
       <div class="week">
-        <% date_range.each do |day| %>
-          <div class="mini-square" data-level="<%= logs[[habit.id, day]] ? '1' : '0' %>">
+        <% habits_presenter.date_range.each do |day| %>
+          <div class="mini-square" data-level="<%= habits_presenter.habit_count(habit, day) ? '1' : '0' %>">
           </div>
         <% end %>
       </div>
     </div>
   <% end %>
-  <% if habit.done_today? %>
+  <% if habits_presenter.done_today?(habit) %>
     <div class="check done">
       <%= icon :check %>
     </div>
   <% else %>
-    <%= link_to done_habit_path(habit), data: { turbo_method: :post,  action: "click->ajax#done" }, class: "check" do %>
+    <%#= link_to done_habit_path(habit), data: { turbo_method: :post,  action: "click->ajax#done" }, class: "check" do %>
+    <%= link_to done_habit_path(habit), data: { turbo_method: :post }, class: "check" do %>
       <%= icon :check %>
     <% end %>
   <% end %>
