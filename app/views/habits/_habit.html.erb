@@ -1,0 +1,19 @@
+<div class="habit-card">
+  <div class="info">
+    <%= link_to habit.name, habit_path(habit), class: "title" %>
+    <div class="streak">
+      <strong><%= habit.current_streak %></strong> streak, <strong><%= habit.habit_logs.size %></strong> total
+    </div>
+    <div class="week">
+      <% date_range.each do |day| %>
+        <div class="mini-square" data-level="<%= logs_by_habit_and_date[[habit.id, day]] ? '1' : '0' %>">
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if habit.done_today? %>
+    <div class="check done"></div>
+  <% else %>
+    <%= link_to "", done_habit_path(habit), data: { turbo_method: :post,  action: "click->ajax#done" }, class: "check" %>
+  <% end %>
+</div>

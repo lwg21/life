@@ -8,6 +8,8 @@ export default class extends Controller {
   done(event) {
     event.preventDefault();
 
+    const card = event.currentTarget.closest(".habit-card");
+
     // Optimistic UI
     event.currentTarget.classList.add("habit-done");
 
@@ -26,7 +28,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         this.calendarTarget.outerHTML = data.calendar;
-        this.habitsTarget.outerHTML = data.habits;
+        card.outerHTML = data.habits;
       })
   }
 }

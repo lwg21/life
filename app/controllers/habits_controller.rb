@@ -1,17 +1,13 @@
 class HabitsController < ApplicationController
-  def home
-    set_calendar_data
-  end
-
   def index
-    @today = Date.today
-    @date_range = (@today - 6)..@today
-    @habits = Current.user.habits
+    set_calendar_data
 
+    @today = Date.today
+    @date_range = (@today - 6)..(@today)
     @logs_by_habit_and_date = Current.user.habit_logs
-      .where(log_date: @date_range)
-      .group(:habit_id, :log_date)
-      .count
+    .where(log_date: @date_range)
+    .group(:habit_id, :log_date)
+    .count
   end
 
   def show
@@ -52,6 +48,13 @@ class HabitsController < ApplicationController
     Current.user.check_goals
 
     set_calendar_data
+
+    @today = Date.today
+    @date_range = (@today - 6)..(@today)
+    @logs_by_habit_and_date = Current.user.habit_logs
+    .where(habit: @habit, log_date: @date_range)
+    .group(:habit_id, :log_date)
+    .count
 
     respond_to do |format|
       format.html { redirect_to root_path }
