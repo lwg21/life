@@ -1,13 +1,25 @@
 class HabitsController < ApplicationController
   def index
-    set_calendar_data
+    today = Date.today
+    @habits = Current.user.habits
 
-    @today = Date.today
-    @date_range = (@today - 6)..(@today)
-    @logs_by_habit_and_date = Current.user.habit_logs
-    .where(log_date: @date_range)
-    .group(:habit_id, :log_date)
-    .count
+    @calendar_data = {
+      today: today,
+      habits_count: @habits.count,
+      logs: Current.user.habit_logs
+        .where(log_date: today.beginning_of_month..today.end_of_month)
+        .group(:log_date)
+        .count
+    }
+
+    date_range = (today - 6)..(today)
+    @habits_data = {
+      date_range: date_range,
+      logs: Current.user.habit_logs
+        .where(log_date: date_range)
+        .group(:habit_id, :log_date)
+        .count
+    }
   end
 
   def show
@@ -47,18 +59,36 @@ class HabitsController < ApplicationController
 
     Current.user.check_goals
 
-    set_calendar_data
+    today = Date.today
+    @habits = Current.user.habits
 
-    @today = Date.today
-    @date_range = (@today - 6)..(@today)
-    @logs_by_habit_and_date = Current.user.habit_logs
-    .where(habit: @habit, log_date: @date_range)
-    .group(:habit_id, :log_date)
-    .count
+    @calendar_data = {
+      today: today,
+      habits_count: @habits.count,
+      logs: Current.user.habit_logs
+        .where(log_date: today.beginning_of_month..today.end_of_month)
+        .group(:log_date)
+        .count
+    }
+
+    date_range = (today - 6)..(today)
+    @habit_data = {
+      habit: @habit,
+      date_range: date_range,
+      logs: Current.user.habit_logs
+        .where(log_date: date_range, habit: @habit)
+        .group(:habit_id, :log_date)
+        .count
+    }
 
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.json
+      format.json do
+        render json: {
+          calendar: render_to_string(partial: "habits/calendar", formats: :html, locals: @calendar_data),
+          habits: render_to_string(partial: "habits/habit", formats: :html, locals: @habit_data)
+        }
+      end
     end
   end
 
@@ -83,19 +113,30 @@ class HabitsController < ApplicationController
     params.expect(habit: :name)
   end
 
-  def set_calendar_data
-    today = Date.today
-    @habits = Current.user.habits
+  def calendar_data(options = {})
+    date = options[:date] || Date.today
+    count = options[:count] || Current.user.habits.count
 
-    logs_by_date = Current.user.habit_logs
-      .where(log_date: today.beginning_of_month..today.end_of_month)
-      .group(:log_date)
-      .count
+    {
+      today: date,
+      habits_count: count,
+      logs: Current.user.habit_logs
+        .where(log_date: date.beginning_of_month..date.end_of_month)
+        .group(:log_date)
+        .count
+    }
+  end
 
-    @calendar_data = {
-      today: today,
-      logs: logs_by_date,
-      habits_count: @habits.length
+  def habits_data(options = {})
+    date = options[:date] || Date.today
+    date_range = (date - 6)..(date)
+
+    {
+      date_range: date_range,
+      logs: Current.user.habit_logs
+        .where(log_date: date_range)
+        .group(:habit_id, :log_date)
+        .count
     }
   end
 end

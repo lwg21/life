@@ -1,3 +1,4 @@
+<%# locals: (habit:, date_range:, logs:) -%>
 <div class="habit-card">
   <%= link_to habit_path(habit) do %>
     <div class="info">
@@ -9,7 +10,7 @@
       </div>
       <div class="week">
         <% date_range.each do |day| %>
-          <div class="mini-square" data-level="<%= logs_by_habit_and_date[[habit.id, day]] ? '1' : '0' %>">
+          <div class="mini-square" data-level="<%= logs[[habit.id, day]] ? '1' : '0' %>">
           </div>
         <% end %>
       </div>
