@@ -1,7 +1,6 @@
 class HabitsController < ApplicationController
   def index
     user = Current.user
-    @habits = user.habits
     @calendar = CalendarPresenter.new(user)
     @habits_presenter = HabitCollectionPresenter.new(user)
   end
@@ -38,19 +37,17 @@ class HabitsController < ApplicationController
   end
 
   def mark_done
-    @habit = Habit.find(params[:id])
-    @habit.log(Date.today)
-
-    Current.user.check_goals
-
     user = Current.user
-    @habits = user.habits
-    @calendar = CalendarPresenter.new(user)
-    @habits_presenter = HabitCollectionPresenter.new(user)
+    @habit = user.habits.find(params[:id])
+    @habit.log(Date.today)
+    user.check_goals
 
     respond_to do |format|
       format.html { redirect_to root_path }
       format.json do
+        @calendar = CalendarPresenter.new(user)
+        @habits_presenter = HabitCollectionPresenter.new(user)
+
         render json: {
           calendar: render_to_string(partial: "calendar", formats: :html, locals: { calendar: @calendar }),
           habit: render_to_string(partial: "habit", formats: :html, locals: { habit: @habit, habits_presenter: @habits_presenter })

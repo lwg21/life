@@ -1,9 +1,6 @@
 <div data-controller="ajax">
   <%= render partial: "calendar", locals: { calendar: @calendar } %>
-
-  <div class="habits" data-ajax-target="habits">
-    <%= render partial: "habit", collection: @habits, locals: { habits_presenter: @habits_presenter } %>
-  </div>
+  <%= render partial: "habits", locals: { habits_presenter: @habits_presenter } %>
 
   <div class="actions">
     <%= link_to reset_habits_path, data: { turbo_method: :delete, action: "click->ajax#reset" } do %>
