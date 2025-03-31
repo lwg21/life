@@ -21,8 +21,7 @@
       <%= icon :check %>
     </div>
   <% else %>
-    <%#= link_to done_habit_path(habit), data: { turbo_method: :post,  action: "click->ajax#done" }, class: "check" do %>
-    <%= link_to done_habit_path(habit), data: { turbo_method: :post }, class: "check" do %>
+    <%= link_to done_habit_path(habit), data: { turbo_method: :post,  action: "click->ajax#done" }, class: "check" do %>
       <%= icon :check %>
     <% end %>
   <% end %>

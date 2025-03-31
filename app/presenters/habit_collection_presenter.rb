@@ -1,5 +1,5 @@
 class HabitCollectionPresenter
-  attr_reader :date_range, :logs
+  attr_reader :date_range
 
   def initialize(user)
     @user = user

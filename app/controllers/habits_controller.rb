@@ -43,34 +43,17 @@ class HabitsController < ApplicationController
 
     Current.user.check_goals
 
-    today = Date.today
-    @habits = Current.user.habits
-
-    @calendar_data = {
-      today: today,
-      habits_count: @habits.count,
-      logs: Current.user.habit_logs
-        .where(log_date: today.beginning_of_month..today.end_of_month)
-        .group(:log_date)
-        .count
-    }
-
-    date_range = (today - 6)..(today)
-    @habit_data = {
-      habit: @habit,
-      date_range: date_range,
-      logs: Current.user.habit_logs
-        .where(log_date: date_range, habit: @habit)
-        .group(:habit_id, :log_date)
-        .count
-    }
+    user = Current.user
+    @habits = user.habits
+    @calendar = CalendarPresenter.new(user)
+    @habits_presenter = HabitCollectionPresenter.new(user)
 
     respond_to do |format|
       format.html { redirect_to root_path }
       format.json do
         render json: {
-          calendar: render_to_string(partial: "habits/calendar", formats: :html, locals: @calendar_data),
-          habits: render_to_string(partial: "habits/habit", formats: :html, locals: @habit_data)
+          calendar: render_to_string(partial: "calendar", formats: :html, locals: { calendar: @calendar }),
+          habit: render_to_string(partial: "habit", formats: :html, locals: { habit: @habit, habits_presenter: @habits_presenter })
         }
       end
     end
