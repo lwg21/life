@@ -57,8 +57,22 @@ class HabitsController < ApplicationController
   end
 
   def reset_day
-    Current.user.habit_logs.where(log_date: Date.today).destroy_all
-    redirect_to root_path, status: :see_other
+    user = Current.user
+    habit_logs = user.habit_logs.where(log_date: Date.today)
+    habit_logs.destroy_all
+
+    respond_to do |format|
+      format.html { redirect_to root_path, status: :see_other }
+      format.json do
+        @calendar = CalendarPresenter.new(user)
+        @habits_presenter = HabitCollectionPresenter.new(user)
+
+        render json: {
+          calendar: render_to_string(partial: "calendar", formats: :html, locals: { calendar: @calendar }),
+          habits: render_to_string(partial: "habits", formats: :html, locals: { habits_presenter: @habits_presenter })
+        }
+      end
+    end
   end
 
   def destroy

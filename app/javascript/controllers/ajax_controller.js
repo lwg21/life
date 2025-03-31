@@ -38,28 +38,19 @@ export default class extends Controller {
     const url = event.currentTarget.href;
     const token = document.head.querySelector("meta[name=csrf-token]")?.content;
 
-    console.log(url);
-
-
     const options = {
       method: "DELETE",
       headers: {
-        // "Accept": "application/json",
+        "Accept": "application/json",
         "X-CSRF-Token": token
       }
     }
 
     fetch(url, options)
-      .then(response => response.text())
+      .then(response => response.json())
       .then(data => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data, "text/html");
-
-        const calendar = doc.querySelector(".calendar");
-        document.querySelector(".calendar").innerHTML = calendar.innerHTML;
-
-        const habits = doc.querySelector(".habits");
-        document.querySelector(".habits").innerHTML = habits.innerHTML;
+        this.calendarTarget.outerHTML = data.calendar;
+        this.habitsTarget.outerHTML = data.habits;
       })
   }
 }
