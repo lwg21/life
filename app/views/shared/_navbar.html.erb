@@ -1,6 +1,6 @@
 <nav>
   <% if authenticated? %>
-    <%= link_to root_path, class: navbar_active?(:home, params) do %>
+    <%= link_to root_path, class: navbar_active?(:habits, params) do %>
       <%= icon :list %>
       <div>habits</div>
     <% end %>

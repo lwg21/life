@@ -7,10 +7,8 @@ module ApplicationHelper
 
   def navbar_active?(section, params)
     active = case section
-    when :home
-      params["action"] == "home"
     when :habits
-      params["controller"] == "habits" && params["action"] != "home"
+      params["controller"] == "habits"
     when :unlocks
       params["controller"] == "goals"
     when :settings
