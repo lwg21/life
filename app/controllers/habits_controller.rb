@@ -6,20 +6,9 @@ class HabitsController < ApplicationController
   end
 
   def show
-    @habit = Habit.find(params[:id])
-
-    today = Date.today
-    @habits = Current.user.habits
-
-    logs_by_date = @habit.habit_logs
-      .group(:log_date)
-      .count
-
-    @calendar_data = {
-      today: today,
-      logs: logs_by_date,
-      habits_count: @habits.length
-    }
+    user = Current.user
+    @habit = user.habits.find(params[:id])
+    @calendar = CalendarPresenter.new(user, habit: @habit)
   end
 
   def new

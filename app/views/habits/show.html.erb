@@ -2,6 +2,6 @@
 <div>current streak: <%= @habit.current_streak %></div>
 <div>longest streak: <%= @habit.longest_streak %></div>
 <div>all-time total: <%= @habit.habit_logs.size %></div>
-<%= render partial: "calendar", locals: @calendar_data %>
+<%= render partial: "calendar", locals: { calendar: @calendar } %>
 
 <%= link_to "Delete habit", habit_path(@habit), style: "color: red; font-weight: 500; font-size: small;", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
