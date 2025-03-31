@@ -61,7 +61,7 @@ class HabitsController < ApplicationController
 
   def reset_day
     Current.user.habit_logs.where(log_date: Date.today).destroy_all
-    redirect_to root_path
+    redirect_to root_path, status: :see_other
   end
 
   def destroy
