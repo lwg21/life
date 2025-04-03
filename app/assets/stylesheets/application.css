@@ -28,6 +28,8 @@ body {
   height: 100vh;
   font-family: var(--font-primary);
   font-weight: 300;
+  max-width: 40rem;
+  margin-inline: auto;
 }
 
 h1,h2,h3,h4,h5,h6 {
