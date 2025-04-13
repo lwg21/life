@@ -59,7 +59,7 @@
     align-content: center;
     color: rgb(230, 230, 230);
     background-color: white;
-    border-radius: 50%;
+    border-radius: 8%;
   }
 
   .check.done {
