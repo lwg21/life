@@ -51,8 +51,10 @@
 .streak-days-7 {
   background: conic-gradient(
     from 0deg at 0% 100%,
-    #b8d3f5 42deg,
-    #12335c 42deg 65deg,
+    #b8d3f5 36deg,
+    #1d5714 36deg 42deg,
+    #12335c 42deg 58deg,
+    #f2eb41 58deg 63deg,
     #68a4f0 65deg 83deg,
     #68a4f0 83deg 90deg
   );
