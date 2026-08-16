@@ -9,14 +9,14 @@ nav {
   left: 0;
   height: var(--navbar-height);
   width: 100vw;
-  padding-bottom: 10px;
+  padding-bottom: var(--navbar-pb);
 
   & a {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
+    gap: 1px;
     color: #929292;
     text-decoration: none;
     /* height: 100%;

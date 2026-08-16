@@ -16,7 +16,7 @@
   flex-direction: column;
   font-size: medium;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 .goal-name {

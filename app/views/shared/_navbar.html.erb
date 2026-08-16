@@ -1,7 +1,7 @@
 <nav>
   <% if authenticated? %>
     <%= link_to root_path, class: navbar_active?(:habits, params) do %>
-      <%= icon :list %>
+      <%= icon :square_check_big %>
       <div>habits</div>
     <% end %>
     <%= link_to goals_path, class: navbar_active?(:unlocks, params) do %>

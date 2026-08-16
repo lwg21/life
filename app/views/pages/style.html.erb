@@ -8,12 +8,11 @@
     <div class="square" style="background-color:rgb(90, 90, 90);"></div>
     <div class="square" style="background-color:rgb(55, 55, 55);"></div>
     <div class="square" style="background-color:black;"></div>
-</div>
 
-<div class="calendar">
-  <% (0..6).each do |i| %>
-    <div class="square" data-level="<%= i %>"></div>
-  <% end %>
+    <% (0..5).each do |i| %>
+      <div class="square" data-level="<%= i %>"></div>
+    <% end %>
+    <div class="square" style="background-color:black;"></div>
 </div>
 
 <div style="height: 50px;"></div>

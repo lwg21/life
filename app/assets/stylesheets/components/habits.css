@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
   background-color: rgb(230, 230, 230);
-  border-radius: 4px;
+  border-radius: 2px;
   padding-inline: 18px;
   padding-block: 18px;
   gap: 30px;
@@ -59,11 +59,11 @@
     align-content: center;
     color: rgb(230, 230, 230);
     background-color: white;
-    border-radius: 8%;
+    border-radius: 4px;
   }
 
   .check.done {
-    background-color: #496d99;
+    background-color: oklch(51.1% 0.096 186.391);
   }
 
   svg {
@@ -74,7 +74,7 @@
 
 .mini-square {
   aspect-ratio: 1;
-  border-radius: 2px;;
+  border-radius: 1px;;
 }
 
 .mini-square[data-level="0"] {
@@ -82,5 +82,5 @@
 }
 
 .mini-square[data-level="1"] {
-  background-color: #496d99;
+  background-color: oklch(51.1% 0.096 186.391);
 }

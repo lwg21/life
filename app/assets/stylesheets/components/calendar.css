@@ -7,7 +7,7 @@
 .square {
   aspect-ratio: 1;
   /* align-content: center; */
-  border-radius: 4px;
+  border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,28 +28,43 @@
 }
 
 .square[data-level="1"] {
-  background-color:#94c1f8;
+  background-color: #94c1f8;
+  background-color: oklch(77.7% 0.152 181.912);
+  background-color: oklch(85.5% 0.138 181.071);
 }
 
 .square[data-level="2"] {
-  background-color:#6896cf;
+  background-color: #6896cf;
+  background-color: oklch(77.7% 0.152 181.912);
+  background-color: oklch(77.7% 0.152 181.912);
   color: white;
 }
 
 .square[data-level="3"] {
-  background-color:#496d99;
+  background-color: #496d99;
+  background-color: oklch(60% 0.118 184.704);
+  background-color: oklch(70.4% 0.14 182.503);
+  background-color: oklch(60% 0.118 184.704);
   color: white;
 }
 
 .square[data-level="4"] {
   background-color: #295386;
+  background-color: oklch(43.7% 0.078 188.216);
+  background-color: oklch(51.1% 0.096 186.391);
   color: white;
 }
 
 .square[data-level="5"] {
   background-color: #12335c;
+  background-color: oklch(26.2% 0.051 172.552);
+  background-color: oklch(38.6% 0.063 188.416);
   color: white;
 }
+
+
+
+oklch(38.6% 0.063 188.416)
 
 
 .today {
